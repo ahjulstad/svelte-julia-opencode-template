@@ -7,10 +7,11 @@
 	"features": {
 		"ghcr.io/julialang/devcontainer-features/julia:1": {
 			"channel": "1.12"
-		}
+		},
+		"ghcr.io/astral-sh/uv/devcontainer-feature/uv:1": {}
 	},
 	"forwardPorts": [5173, 8080],
-	"postCreateCommand": "npm install -g pnpm && pnpm install && julia --project=/workspaces/test-opencode/server -e 'using Pkg; Pkg.instantiate()'",
+	"postCreateCommand": "git submodule update --init && npm install -g pnpm && pnpm install && julia --project=/workspaces/test-opencode/server -e 'using Pkg; Pkg.instantiate()'",
 	"customizations": {
 		"vscode": {
 			"extensions": [

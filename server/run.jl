@@ -1,9 +1,8 @@
 # Production entrypoint — no Revise overhead.
 #
 # Run with:
-#   julia --project=. run.jl
+#   julia --project=server run.jl
 
-include("src/Server.jl")
-using .Server
+using Server
 
-Server.serve(port=8080)
+serve(port=8080)

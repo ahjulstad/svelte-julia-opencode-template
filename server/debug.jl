@@ -4,7 +4,7 @@
 #   julia --project=. -e "using Pkg; Pkg.instantiate()"
 #
 # Start the dev server:
-#   julia --project=. debug.jl
+#   julia --project=server debug.jl
 #
 # To give OpenCode julia_eval() access via aplavin/julia-mcp:
 #   git submodule update --init julia-mcp
@@ -16,11 +16,8 @@
 #         "enabled": true
 #       }
 #     }
-# Revise will be picked up automatically if it is in your global Julia environment.
 
 using Revise
-using Oxygen
-include("src/Server.jl")
-using .Server
+using Server
 
-Server.serve(port=8080, revise=:eager)
+serve(port=8080)

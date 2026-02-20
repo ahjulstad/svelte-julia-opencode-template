@@ -38,7 +38,7 @@ src/
   routes/       # file-based routing (+page.svelte, +layout.svelte, etc.)
   tests/        # unit/component tests
 static/         # public assets
-server/         # Julia HTTP server (Oxygen.jl), dev entry: server/debug.jl
+server/         # Julia HTTP server (Oxygen.jl); routes in server/src/Server.jl, loaded via Revise.includet for hot reload
 julia-mcp/      # git submodule — aplavin/julia-mcp (MCP server for julia_eval)
 opencode.jsonc  # OpenCode config — registers julia-mcp as a local MCP tool
 ```
