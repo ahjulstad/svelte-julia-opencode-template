@@ -1,0 +1,4 @@
+# Julia compiled artefacts — never commit these
+*.ji
+*.so
+*.dylib

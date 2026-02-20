@@ -1,0 +1,10 @@
+{
+	"$schema": "https://opencode.ai/config.json",
+	"mcp": {
+		"julia": {
+			"type": "local",
+			"command": ["uv", "run", "--directory", "julia-mcp", "python", "server.py"],
+			"enabled": true
+		}
+	}
+}

@@ -7,6 +7,15 @@ export default defineConfig({
 	resolve: {
 		conditions: ['browser']
 	},
+	server: {
+		host: '0.0.0.0',
+		proxy: {
+			'/api': {
+				target: 'http://localhost:8080',
+				rewrite: (path) => path.replace(/^\/api/, '')
+			}
+		}
+	},
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}'],
 		environment: 'jsdom',
