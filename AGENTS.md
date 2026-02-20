@@ -10,45 +10,45 @@
 - **Testing**: Vitest + @testing-library/svelte
 - **Linting**: ESLint (flat config) + eslint-plugin-svelte
 - **Formatting**: Prettier + prettier-plugin-svelte
-- **Package manager**: npm
+- **Package manager**: pnpm
 - **Runtime**: Node.js
 
 ## Build Commands
 
 ```bash
-npm install              # Install dependencies
-npm run build            # Production build (vite build)
-npm run preview          # Preview production build locally
-npm run dev              # Start dev server (vite dev)
-npm run dev -- --open    # Start dev server and open browser
-npm run prepare          # Sync SvelteKit generated files
+pnpm install              # Install dependencies
+pnpm run build            # Production build (vite build)
+pnpm run preview          # Preview production build locally
+pnpm run dev              # Start dev server (vite dev)
+pnpm run dev -- --open    # Start dev server and open browser
+pnpm run prepare          # Sync SvelteKit generated files
 ```
 
 ## Test Commands
 
 ```bash
-npm run test                              # Run all tests once
-npm run test:watch                        # Run tests in watch mode
-npm run test:coverage                     # Run tests with coverage
+pnpm run test                              # Run all tests once
+pnpm run test:watch                        # Run tests in watch mode
+pnpm run test:coverage                     # Run tests with coverage
 
 # Run a single test file
-npx vitest run src/tests/page.test.ts
+pnpm vitest run src/tests/page.test.ts
 
 # Run tests matching a name pattern
-npx vitest run -t "renders the welcome"
+pnpm vitest run -t "renders the welcome"
 
 # Run tests in a specific directory
-npx vitest run src/tests/
+pnpm vitest run src/tests/
 ```
 
 ## Lint / Format / Type Check
 
 ```bash
-npm run lint             # ESLint (flat config)
-npm run format           # Prettier — write fixes
-npm run format:check     # Prettier — check only (CI-friendly)
-npm run check            # svelte-check + TypeScript type checking
-npm run check:watch      # Type checking in watch mode
+pnpm run lint             # ESLint (flat config)
+pnpm run format           # Prettier — write fixes
+pnpm run format:check     # Prettier — check only (CI-friendly)
+pnpm run check            # svelte-check + TypeScript type checking
+pnpm run check:watch      # Type checking in watch mode
 ```
 
 ## Code Style Guidelines
@@ -135,7 +135,7 @@ npm run check:watch      # Type checking in watch mode
 
 ## Agent-Specific Notes
 
-- Always run `npm run check` after modifying TypeScript or Svelte files to catch type errors.
+- Always run `pnpm run check` after modifying TypeScript or Svelte files to catch type errors.
 - After adding new dependencies, update this file if they introduce new conventions or commands.
 - SvelteKit auto-generates files in `.svelte-kit/` — never edit these directly.
 - The `$lib` alias resolves to `src/lib/`; use it for all internal imports.
