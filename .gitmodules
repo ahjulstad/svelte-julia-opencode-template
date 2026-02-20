@@ -1,0 +1,3 @@
+[submodule "julia-mcp"]
+	path = julia-mcp
+	url = https://github.com/aplavin/julia-mcp.git
