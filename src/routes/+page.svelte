@@ -48,13 +48,13 @@
 				id="matrix-size"
 				type="range"
 				min="2"
-				max="6"
+				max="20"
 				bind:value={n}
 				class="w-full accent-indigo-600"
 			/>
 			<div class="mt-1 flex justify-between text-xs text-gray-400">
 				<span>2</span>
-				<span>6</span>
+				<span>20</span>
 			</div>
 		</div>
 
