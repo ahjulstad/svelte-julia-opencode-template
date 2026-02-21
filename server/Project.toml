@@ -9,4 +9,5 @@ Oxygen = "df9a0d86-3283-4920-82dc-4555fc0d1d8b"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 
 [compat]
+Revise = "< 3.13"
 julia = "1.12"
