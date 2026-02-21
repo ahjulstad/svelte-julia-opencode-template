@@ -1,3 +1,6 @@
 [submodule "julia-mcp"]
 	path = julia-mcp
 	url = https://github.com/aplavin/julia-mcp.git
+[submodule "opencode-upstream"]
+	path = opencode-upstream
+	url = https://github.com/anomalyco/opencode.git
