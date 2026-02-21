@@ -5,4 +5,4 @@
 
 using Server
 
-serve(port=8080)
+Server.serve(port=8080)

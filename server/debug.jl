@@ -18,6 +18,7 @@
 #     }
 
 using Revise
+using Oxygen
 using Server
 
-serve(port=8080)
+Server.serve(port=8080, revise=:eager)

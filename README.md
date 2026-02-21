@@ -1,42 +1,61 @@
-# sv
+# test-opencode
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+SvelteKit frontend + Julia (Oxygen.jl) API server.
 
-## Creating a project
+## Prerequisites
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Node.js 20+, pnpm
+- Julia 1.12+
+- uv (for julia-mcp MCP server)
 
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
+## Setup
 
 ```sh
-# recreate this project
-npx sv create --template minimal --types ts --install npm .
+git submodule update --init
+pnpm install
+julia --project=server -e 'using Pkg; Pkg.instantiate()'
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Development
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm run dev
 ```
 
-## Building
+Starts both the Vite dev server (`:5173`) and the Julia API server (`:8080`) with hot reload via Revise. Frontend requests to `/api/*` are proxied to the Julia server (the `/api` prefix is stripped).
 
-To create a production version of your app:
+Other commands:
 
 ```sh
-npm run build
+pnpm run check     # svelte-check + tsc
+pnpm run lint      # ESLint
+pnpm run format    # Prettier (write)
+pnpm run test      # Vitest
 ```
 
-You can preview the production build with `npm run preview`.
+## Production
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+pnpm run build                            # SvelteKit
+julia --project=server server/run.jl      # Julia (no Revise overhead)
+```
+
+## Architecture
+
+```
+Browser --> Vite (:5173) --> SvelteKit (frontend)
+               \--> /api/* proxy --> Oxygen.jl (:8080)
+
+OpenCode --> julia-mcp (stdio MCP) --> persistent Julia REPL
+```
+
+## API Endpoints
+
+| Method | Path           | Description                                                     |
+| ------ | -------------- | --------------------------------------------------------------- |
+| GET    | `/health`      | Health check (`{"status": "ok"}`)                               |
+| GET    | `/eigvals/{n}` | Eigenvalues of a random n x n symmetric matrix (n clamped 2..6) |
+
+## Julia MCP
+
+The `julia-mcp` git submodule provides AI agents with `julia_eval()` access via the MCP protocol. Configured in `opencode.jsonc`.
