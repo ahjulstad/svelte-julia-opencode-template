@@ -21,4 +21,4 @@ using Revise
 using Oxygen
 using Server
 
-Server.serve(port=8080, revise=:eager)
+Server.serve(port=8080, revise=:lazy)
