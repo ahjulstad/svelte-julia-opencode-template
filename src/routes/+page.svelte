@@ -78,7 +78,7 @@
 					Eigenvalues of a random {result.matrix_size}×{result.matrix_size} symmetric matrix:
 				</p>
 				<ol class="space-y-1">
-					{#each result.eigenvalues as val, i}
+					{#each result.eigenvalues as val, i (i)}
 						<li class="flex items-center gap-3 rounded px-3 py-1.5 text-sm odd:bg-gray-50">
 							<span class="w-5 text-right text-gray-400">{i + 1}</span>
 							<span class="font-mono text-gray-800">{val.toFixed(6)}</span>
