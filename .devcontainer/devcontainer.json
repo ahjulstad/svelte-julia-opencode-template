@@ -1,17 +1,23 @@
 {
 	"name": "My OpenCode Project",
-	"image": "vegastyle/opencode-devcontainer-base:latest",
-	"capAdd": ["NET_ADMIN", "NET_RAW"],
+	"build": {
+		"context": "..",
+		"dockerfile": "dockerfile"
+	},
+	"capAdd": [
+		"NET_ADMIN",
+		"NET_RAW"
+	],
 	"remoteUser": "node",
 	// "postStartCommand": "sudo /usr/local/bin/init-firewall.sh",
 	"features": {
-		"ghcr.io/julialang/devcontainer-features/julia:1": {
-			"channel": "1.12"
-		},
-		"ghcr.io/astral-sh/uv/devcontainer-feature/uv:1": {}
+		"ghcr.io/devcontainers-extra/features/uv:1": {}
 	},
-	"forwardPorts": [5173, 8080],
-	"postCreateCommand": "git submodule update --init && npm install -g pnpm && pnpm install && julia --project=/workspaces/test-opencode/server -e 'using Pkg; Pkg.instantiate()'",
+	"forwardPorts": [
+		5173,
+		8080
+	],
+	"postCreateCommand": "git submodule update --init && npm install -g opencode-ai@latest && npm install -g pnpm && pnpm install && julia --project=server -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'",
 	"customizations": {
 		"vscode": {
 			"extensions": [
